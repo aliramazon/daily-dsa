@@ -13,3 +13,19 @@ const increasingSubstrings = (str) => {
 };
 
 console.log(increasingSubstrings("abcd"));
+
+// Input: "abcd", Output: ["abcd", "bcd", "cd", d]
+const decreasingSubstrings = (str) => {
+    let subs = [];
+
+    const cut = (i) => {
+        if (i === str.length) return;
+        subs.push(str.slice(i));
+        cut(i + 1);
+    };
+    cut(0);
+
+    return subs;
+};
+
+console.log(decreasingSubstrings("abcde"));
