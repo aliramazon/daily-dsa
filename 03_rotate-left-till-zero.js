@@ -38,25 +38,27 @@ const rotateLeftTillZeroV1 = (nums) => {
 };
 
 /* Uses an extra array to achieve O(n) time complexity */
-
+Input: [1, 8, 2, 3, 0, 5, 6];
+Output: [0, 5, 6, 1, 8, 2, 3];
 const rotateLeftTillZeroV2 = (nums) => {
-    let firstZeroPos = 0;
-    let copy = new Array(nums.length);
+    const length = nums.length;
+    let offset = 0;
+    let copy = new Array(length);
 
-    if (nums[firstZeroPos] === 0) {
+    if (nums[offset] === 0) {
         return nums;
     }
 
-    for (let i = 0; i < nums.length; i++) {
+    for (let i = 0; i < length; i++) {
         if (nums[i] === 0) {
-            firstZeroPos = i;
+            offset = i;
         }
         copy[i] = nums[i];
     }
 
-    for (let j = 0; j < nums.length; j++) {
-        let offset = j - firstZeroPos;
-        const newPos = (offset + nums.length) % nums.length;
+    for (let j = 0; j < length; j++) {
+        const newPos = (j - offset + length) % length;
+
         nums[newPos] = copy[j];
     }
 
