@@ -1,5 +1,5 @@
-/* Create a function that takes an integer array containing one 0 and rotates the array counterclockwise so that the 0 ends up at the front of the array. */
-/* 
+/* Create a function that takes an integer array containing one 0 and rotates the array counterclockwise so that the 0 ends up at the front of the array.
+
     Examples:
 
     Input:  [0,1,2,3]
@@ -19,28 +19,31 @@
     ---
     Input:  [1,8,2,3,4,5,0]
     Output: [0,1,8,2,3,4,5]
----
-
 */
 
-/* 
-    Time Complexity:
-        Each shift() is O(N) in JS, because all elements must be reindexed.
-        In the worst case, zero is at the end and you may do up to n shifts
+type Numbers = number[];
+
+/*  
+Time Complexity:
+    Each shift() is O(N) in JS, because all elements must be reindexed.
+    In the worst case, zero is at the end and you may do up to n shifts
 */
 
-const rotateLeftTillZeroV1 = (nums) => {
+const rotateLeftTillZeroV1 = (nums: Numbers): Numbers => {
+    if (nums.length === 0) return nums;
     while (nums[0] !== 0) {
-        nums.push(nums.shift());
+        const shiftedElement = nums.shift();
+        if (shiftedElement) {
+            nums.push(shiftedElement);
+        }
     }
 
     return nums;
 };
 
 /* Uses an extra array to achieve O(n) time complexity */
-Input: [1, 8, 2, 3, 0, 5, 6];
-Output: [0, 5, 6, 1, 8, 2, 3];
-const rotateLeftTillZeroV2 = (nums) => {
+
+const rotateLeftTillZeroV2 = (nums: Numbers): Numbers => {
     const length = nums.length;
     let offset = 0;
     let copy = new Array(length);
