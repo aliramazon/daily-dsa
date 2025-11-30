@@ -24,7 +24,7 @@
 ---
 */
 
-const rotateRightUntilEnd = (nums) => {
+const rotateRightUntilEnd = (nums: number[]): number[] => {
     const length = nums.length;
     if (nums[length - 1] === 0) return nums;
     const copy = new Array(length);
@@ -32,7 +32,7 @@ const rotateRightUntilEnd = (nums) => {
     let zeroPos = 0;
 
     for (let i = 0; i < length; i++) {
-        if (nums[i] == 0) {
+        if (nums[i] === 0) {
             zeroPos = i;
         }
         copy[i] = nums[i];
